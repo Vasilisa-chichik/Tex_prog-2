@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Aeroflot.h"
 #include "FlightManager.h"
+#include "FileTask.h"
 
 void menu()
 {
@@ -11,6 +12,7 @@ void menu()
                  "5. Поиск по пункту назначения\n"
                  "6. Сохранить рейсы в файл\n"
                  "7. Загрузить рейсы из файла\n"
+                 "8. Печать слов из файла, начинающихся с гласных\n"
                  "0. Выход\n";
 }
 
@@ -82,6 +84,13 @@ int main()
                 std::cout << "Введите имя файла для загрузки: ";
                 std::getline(std::cin, fname);
                 manager.loadFromFile(fname);
+            }
+            else if (op == 8)
+            {
+                std::string fname;
+                std::cout << "Введите имя файла: ";
+                std::getline(std::cin, fname);
+                printWordsStartingWithVowelFromFile(fname);
             }
         }
         catch (const MyException &e)
